@@ -1,0 +1,109 @@
+Dans tech test doc
+
+If you have any question contact calvinkalintra@yahoo.com
+
+run project using npm start.
+
+default port 4000 
+default host localhost:4000
+
+
+routes: 
+
+- post localhost:4000/v1/users/login
+return token of existing user
+
+body:
+{
+	"userName": "required|string",
+    "password": "required|string"
+}
+
+example return: 
+{
+    "status": 200,
+    "message": "user logged in",
+    "data": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY3Mjg5NjQsImRhdGEiOnsiaWQiOiIxIiwidXNlcl9uYW1lIjoidGVzdDEiLCJwYXNzd29yZCI6IjEyMyJ9LCJpYXQiOjE2NzY3MTgxNjR9.Xnv-U3oYcYxtn-V5s05ng2BaZLtutoHBp5UUzFG-XO4"
+    }
+}
+
+- post localhost:4000/v1/users/sign-up
+create new user and return new user's token
+
+body:
+{
+	"userName": "required|string",
+    "password": "required|string"
+}
+
+example return: 
+{
+    "status": 200,
+    "message": "user created",
+    "data": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY3MzA4MzksImRhdGEiOnt9LCJpYXQiOjE2NzY3MjAwMzl9.5dJyfj8v77FvkP-ojv--ysiU_SwfsUd3nLuUT8imecA"
+    }
+}
+
+
+- get localhost:4000/v1/jobs/list?description=python&location=berlin
+return job lists
+
+headers:
+Authorization = Bearer [token]
+
+query: 
+description
+location
+full_time
+page
+
+example return:
+{
+    "status": 200,
+    "message": "",
+    "data": [
+        {
+            "id": "f4a7c47f-c8ac-49fa-b15b-4ab37bfd2307",
+            "type": "Full Time",
+            "url": "https://jobs.github.com/positions/f4a7c47f-c8ac-49fa-b15b-4ab37bfd2307",
+            "created_at": "Tue May 18 09:52:30 UTC 2021",
+            "company": "Blindside",
+            "company_url": "https://www.blindside.pro",
+            "location": "Berlin",
+            "title": "Flutter Developer",
+            "description": "<p></p>\n",
+            "company_logo": "https://jobs.github.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZzZqIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--23cbad69864ba3e2e6614bda12beda0b08c03c68/blindside.jpg"
+        }
+    ]
+}
+
+- get localhost:4000/v1/jobs/detail/:id
+return job detail
+
+headers:
+Authorization = Bearer [token]
+
+params: 
+id = job id
+
+example return:
+{
+    "status": 200,
+    "message": "",
+    "data": {
+        "id": "ed80af1f-d0bb-43ef-8bb4-9eab63fc41ec",
+        "type": "Full Time",
+        "url": "https://jobs.github.com/positions/ed80af1f-d0bb-43ef-8bb4-9eab63fc41ec",
+        "created_at": "Tue May 18 16:12:42 UTC 2021",
+        "company": "Car Registration, Inc. ",
+        "company_url": null,
+        "location": "Elk Grove, Ca - REMOTE",
+        "title": "Software Architect/Developer",
+        "description": "<p>Car Registration.</p>\n",
+        "how_to_apply": "<p>If you are interested, please send your resume to <a href=\"mailto:Jobs@carregistration.com\">Jobs@carregistration.com</a>.  CANDIDATES only, please.</p>\n",
+        "company_logo": "https://jobs.github.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG1qIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e3201f4f336dce8ebdee4d47073fde54081a827a/CRI%20FLSP%20Logo.png"
+    }
+}
+
