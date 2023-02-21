@@ -1,0 +1,5 @@
+ENV=local
+NODE_ENV=local
+
+VERSION=0.0.1
+TOKEN_SECRET=sWkspPOajsl
